@@ -11,14 +11,14 @@ import {
 
 import { UserService } from './user.service';
 import { Request } from 'express';
+import { UserInterface } from './interfaces/user.interface';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly UserService: UserService) {}
   @Get()
-  findAll(@Req() request: Request): string {
-    console.log(request.ip + 'rec');
-    return this.UserService.getUsers();
+  findAll(): { password: string; name: string; last_name: string }[] {
+    return this.UserService.getAllUsers();
   }
   @Post()
   @HttpCode(201)

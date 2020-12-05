@@ -1,5 +1,5 @@
-// export interface UserInterface {
-//   name: string;
-//   description: string;
-//   price: number;
-// }
+export interface UserInterface {
+  name: string;
+  last_name: string;
+  password: string;
+}
