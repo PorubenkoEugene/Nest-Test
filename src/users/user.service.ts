@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserInterface } from './interfaces/user.interface';
+import { EncryptedUserPassword} from '../../utils/Proxy/user_entity';
 
 @Injectable()
 export class UserService {
@@ -7,16 +7,25 @@ export class UserService {
     {
       name: 'John',
       last_name: 'Kash',
-      password: 'wcwkcowkcwokc',
+      _password: 'wcwkcowkcwokc',
     },
     {
       name: 'Bob',
       last_name: 'Robbins',
-      password: '53535ffd',
+      _password: '53535ffd',
     },
   ];
+
   constructor() {}
-  getAllUsers(): ({ password: string; name: string; last_name: string })[] {
+
+  getAllUsers(): { _password: string; name: string; last_name: string }[] {
     return this.Users;
+  }
+
+  addNewUser(createUserDto): object {
+    console.log('HOH')
+    console.log(createUserDto)
+    const newUser = EncryptedUserPassword(createUserDto);
+    return newUser;
   }
 }
