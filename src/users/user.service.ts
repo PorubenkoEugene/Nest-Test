@@ -7,4 +7,7 @@ export class UserService {
   getUsers(): string {
     return 'get All Users';
   }
+  addUser(user): Promise<any> {
+    return Promise.resolve(setTimeout(() => user, 1000));
+  }
 }

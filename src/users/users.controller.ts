@@ -6,11 +6,12 @@ import {
   Param,
   HttpCode,
   Header,
-  Redirect,
+  Redirect, Body,
 } from '@nestjs/common';
 
 import { UserService } from './user.service';
 import { Request } from 'express';
+import { UserDTO } from './create-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -23,7 +24,7 @@ export class UsersController {
   @Post()
   @HttpCode(201)
   @Header('Cache-Control', 'none')
-  createUser(): string {
-    return `user created!`;
+  async createUser(@Body() UserDto: UserDTO) {
+    return await this.UserService.addUser(UserDTO);
   }
 }
