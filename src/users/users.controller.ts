@@ -14,7 +14,9 @@ import { Request } from 'express';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly UserService: UserService) {}
+  constructor(private readonly UserService: UserService) {
+    console.log('HELLO')
+  }
   @Get()
   findAll(@Req() request: Request): string {
     console.log(request.ip + 'rec');
@@ -22,7 +24,7 @@ export class UsersController {
   }
   @Post()
   @HttpCode(201)
-  @Header('Cache-Control', 'none')
+  // @Header('Cache-Control', 'none')
   createUser(): string {
     return `user created!`;
   }
