@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { UserInterface } from './interfaces/user.interface'
 import { EncryptedUserPassword} from '../../utils/Proxy/user_entity';
 
 @Injectable()
@@ -22,10 +23,11 @@ export class UserService {
     return this.Users;
   }
 
-  addNewUser(createUserDto): object {
+  async addNewUser(createUserDto) {
     console.log('HOH')
     console.log(createUserDto)
-    const newUser = EncryptedUserPassword(createUserDto);
+    const newUser: unknown = await EncryptedUserPassword(createUserDto);
+    this.Users.push(newUser);
     return newUser;
   }
 }

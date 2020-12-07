@@ -23,9 +23,9 @@ export class UsersController {
     return this.UserService.getAllUsers();
   }
   @Post()
-  addUser(@Body() createUserDto: CreateUserDto): UserInterface {
+  async addUser(@Body() createUserDto: CreateUserDto) {
     console.log('kokok');
-    return <UserInterface>this.UserService.addNewUser(createUserDto);
+    return await this.UserService.addNewUser(createUserDto);
   }
   @HttpCode(201)
   @Header('Cache-Control', 'none')
