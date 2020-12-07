@@ -18,8 +18,8 @@ export class UsersController {
   constructor(private readonly UserService: UserService) {}
   @Get()
   findAll(@Req() request: Request): string {
-    console.log(request.ip + 'rec');
-    return this.UserService.getUsers();
+    return `dwfefefe`;
+    // return this.UserService.getUsers();
   }
   @Post()
   @HttpCode(201)
